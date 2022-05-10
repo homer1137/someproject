@@ -9,6 +9,7 @@ const Ul = styled.ul`
   flex-flow: row nowrap;
   justify-content: space-around ;
   align-items: center;
+  z-index: 3;
   li {
     padding:  1.3rem;
   }

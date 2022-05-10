@@ -56,9 +56,17 @@ export const SliderContainerRowWrapper = styled.div`
   display: flex;
   position: relative;
   align-items: center;
-  width: 1200px;
+  width: ${props=>props.sliderArray*400+'px'};
   transition-duration: 0.5s;
-  right: ${(props) => props.moveSlider + "px"};
+  right: ${(props)=>{
+    if (props.state.isScrolling) {
+      return (props.state.isScrolling?props.moveSlider + props.state.scrollX + 'px':null)
+    } else return ((props) => props.moveSlider + "px")
+    }};
+  cursor: grab;
+  &:active{
+    cursor: grabbing;
+  }
 `;
 
 export const SliderContainerRow = styled.div`

@@ -9,64 +9,118 @@ import {
   SliderWindow,
   LeftArrow,
   RightArrow,
-  LiStyled
+  LiStyled,
 } from "./SmallSliderStyles";
 import { HotSpotButton } from "../HotSpot/HotSpotStyles";
 import { sliderArray } from "./sliderArray";
 
 export default function SmallSlider() {
+  //движение стелками
   const [moveSlider, setMoveSlider] = useState(0);
-  const [activeSpot, setActiveSpot] = useState(false);
+
   const active2 = {
-    basis: true
+    basis: true,
   };
 
   function moveRight() {
     if (moveSlider === 400 * (sliderArray.length - 1)) {
-      setMoveSlider((prev) => prev-400 * (sliderArray.length - 1));
+      setMoveSlider((prev) => prev - 400 * (sliderArray.length - 1));
     } else {
       setMoveSlider((prev) => prev + 400);
     }
   }
   function moveLeft() {
     if (moveSlider === 0) {
-      setMoveSlider((prev) => prev+400 * (sliderArray.length - 1));
+      setMoveSlider((prev) => prev + 400 * (sliderArray.length - 1));
     } else {
       setMoveSlider((prev) => prev - 400);
     }
   }
-  
+
+  //движение мышкой
+
+  const [state, setState] = useState({
+    isScrolling: false,
+    clientX: 0,
+    scrollX: 0,
+  });
+
+  function onMouseDown1(e) {
+    let Cx = e.nativeEvent.clientX;
+    setState({
+      ...state,
+      isScrolling: true,
+      clientX: Cx,
+    });
+  }
+
+  function onMouseUp1(e) {
+    if (state.scrollX < 0) {
+      moveLeft();
+    }
+    if (state.scrollX > 0) {
+      moveRight();
+    }
+
+    setState({
+      ...state,
+      isScrolling: false,
+      clientX: 0,
+      scrollX: 0,
+    });
+
+  }
+
+  function onMouseMove1(e) {
+    let v = e.nativeEvent.clientX;
+    let { clientX } = state;
+    if (state.isScrolling) {
+      setState({
+        ...state,
+        scrollX: clientX - v,
+      });
+    }
+  }
+
   return (
-    <SliderContainerColumn>
+    <SliderContainerColumn
+      onMouseDown={(e) => onMouseDown1(e)}
+      onMouseUp={(e) => onMouseUp1(e)}
+      onMouseMove={(e) => onMouseMove1(e)}
+      onMouseLeave={(e) => onMouseUp1(e)}
+    >
       <SliderContainerRow>
-        <LeftArrow
-          onClick={moveLeft}
-          
-        />
+        <LeftArrow onClick={moveLeft} />
         <ul>
-          {sliderArray.map((item, index)=>(
-            <LiStyled key={item.id} onClick={()=>setMoveSlider(400*index)} active2={index===((moveSlider+400)/400-1)?{active2}:null}></LiStyled>
+          {sliderArray.map((item, index) => (
+            <LiStyled
+              key={item.id}
+              onClick={() => setMoveSlider(400 * index)}
+              active2={
+                index === (moveSlider + 400) / 400 - 1 ? { active2 } : null
+              }
+            ></LiStyled>
           ))}
         </ul>
-        <RightArrow
-          onClick={moveRight}
-          
-        />
+        <RightArrow onClick={moveRight} />
       </SliderContainerRow>
       <SliderWindow>
-        <SliderContainerRowWrapper moveSlider={moveSlider}>
-        {sliderArray.map(item=>(
-          <SliderContainerRow key={item.id}>
-            <SliderContainerColumn2>
-              <h3>{item.price}</h3>
-              <h2>{item.title}</h2>
-              <span>{item.weight}</span>
-              <HotSpotButton>Get more</HotSpotButton>
-            </SliderContainerColumn2>
-            <Image src={item.picture} width="140" height="140" />
-          </SliderContainerRow>
-        ))}  
-        
+        <SliderContainerRowWrapper
+          moveSlider={moveSlider}
+          state={state}
+          sliderArray={sliderArray.length}
+        >
+          {sliderArray.map((item) => (
+            <SliderContainerRow key={item.id}>
+              <SliderContainerColumn2>
+                <h3>{item.price}</h3>
+                <h2>{item.title}</h2>
+                <span>{item.weight}</span>
+                <HotSpotButton>Get more</HotSpotButton>
+              </SliderContainerColumn2>
+              <Image src={item.picture} width="140" height="140" />
+            </SliderContainerRow>
+          ))}
         </SliderContainerRowWrapper>
       </SliderWindow>
     </SliderContainerColumn>

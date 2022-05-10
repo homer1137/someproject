@@ -84,10 +84,11 @@ export default function SmallSlider() {
 
   return (
     <SliderContainerColumn
-      onMouseDown={(e) => onMouseDown1(e)}
-      onMouseUp={(e) => onMouseUp1(e)}
-      onMouseMove={(e) => onMouseMove1(e)}
-      onMouseLeave={(e) => onMouseUp1(e)}
+    onPointerDown={(e) => onMouseDown1(e)}
+      onPointerUp={(e) => onMouseUp1(e)}
+      onPointerMove={(e) => onMouseMove1(e)}
+      onPointerLeave={(e) => onMouseUp1(e)}
+      
     >
       <SliderContainerRow>
         <LeftArrow onClick={moveLeft} />

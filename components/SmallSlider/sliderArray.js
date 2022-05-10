@@ -5,7 +5,9 @@ export const sliderArray = [
         description: 'very delicious rice',
         picture: '/m-classic-ribe-risotto.jpg',
         price: '20$',
-        weight: 'kg'
+        weight: 'kg',
+        x: 23,
+        y: 145,
     },
     {
         id: 2,
@@ -13,7 +15,9 @@ export const sliderArray = [
         description: 'interestiong marsilllais',
         picture: '/le-petit-marseillais-festseife-suessmande.jpg',
         price: '23$',
-        weight: 'kg'
+        weight: 'kg',
+        x: 230,
+        y: 45,
     },
     {
         id: 3,
@@ -21,7 +25,9 @@ export const sliderArray = [
         description: 'very delicious Potz',
         picture: '/potz-potz-xpert-javel-multi-cleaner.jpg',
         price: '10$',
-        weight: 'kg'
+        weight: 'kg',
+        x: 230,
+        y: 245,
     },
     {
         id: 4,
@@ -29,7 +35,9 @@ export const sliderArray = [
         description: 'very delicious rice',
         picture: '/m-classic-ribe-risotto.jpg',
         price: '20$',
-        weight: 'kg'
+        weight: 'kg',
+        x: 123,
+        y: 185,
     },
     {
         id: 5,
@@ -37,24 +45,11 @@ export const sliderArray = [
         description: 'interestiong marsilllais',
         picture: '/le-petit-marseillais-festseife-suessmande.jpg',
         price: '23$',
-        weight: 'kg'
+        weight: 'kg',
+        x: 323,
+        y: 245,
     },
-    {
-        id: 7,
-        title:  'Rice from India',
-        description: 'very delicious rice',
-        picture: '/m-classic-ribe-risotto.jpg',
-        price: '20$',
-        weight: 'kg'
-    },
-    {
-        id: 8,
-        title:  'Suessmanda',
-        description: 'interestiong marsilllais',
-        picture: '/le-petit-marseillais-festseife-suessmande.jpg',
-        price: '23$',
-        weight: 'kg'
-    },
+    
 
 
 ];

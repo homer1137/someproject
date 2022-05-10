@@ -1,7 +1,34 @@
 import styled from 'styled-components';
 import { Button } from '../../styles/Button';
 import Image from 'next/image';
+import { IoLocateSharp } from "react-icons/io5";
 
+export const Pointer = styled(IoLocateSharp)`
+  color: ${(props) => props.theme.fontColor};
+  transition-duration: 0.4s;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  cursor: pointer;
+  left: ${(props) => props.xKey+'px'};
+  top: ${(props) => props.yKey+'px'};
+  z-index: 2; 
+  transition-duration: 0.4s;
+  color: ${(props) => {
+    if (props.active2) return (props) => props.theme.fontColor2;
+    else return "white";
+  }};
+
+transform: ${(props) => {
+    if (props.active2) return 'rotate(180deg)';
+    else return 'rotate(0deg)';
+  }};
+
+
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
 
 export const ImageStyled = styled(Image).attrs({
     height: 400,
@@ -10,9 +37,7 @@ export const ImageStyled = styled(Image).attrs({
     
     min-width: 400px;
     z-index: 1;
-    
    
-    
 `;
 
 

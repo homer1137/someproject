@@ -16,6 +16,9 @@ export const LeftArrow = styled(IoChevronBack)`
   }
 `;
 
+
+
+
 export const RightArrow = styled(IoChevronForward)`
   color: ${(props) => props.theme.fontColor2};
   transition-duration: 0.4s;
@@ -123,9 +126,7 @@ export const LiStyled = styled.li`
     if (props.active2) return (props) => props.theme.fontColor2;
     else return "white";
   }};
-  &:active {
-    color: ${(props) => props.theme.fontColor};
-  }
+  
   &:hover {
     transform: scale(1.2);
   }

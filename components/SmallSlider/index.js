@@ -14,9 +14,9 @@ import {
 import { HotSpotButton } from "../HotSpot/HotSpotStyles";
 import { sliderArray } from "./sliderArray";
 
-export default function SmallSlider() {
+export default function SmallSlider({moveSlider, setMoveSlider}) {
   //движение стелками
-  const [moveSlider, setMoveSlider] = useState(0);
+  
 
   const active2 = {
     basis: true,

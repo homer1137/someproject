@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
-import { css } from "styled-components";
+
 
 export const LeftArrow = styled(IoChevronBack)`
   color: ${(props) => props.theme.fontColor2};
   transition-duration: 0.4s;
+  height: 25px;
+  width: 25px;
   cursor: pointer;
   &:active {
     color: ${(props) => props.theme.fontColor};
@@ -18,6 +20,8 @@ export const RightArrow = styled(IoChevronForward)`
   color: ${(props) => props.theme.fontColor2};
   transition-duration: 0.4s;
   cursor: pointer;
+  height: 25px;
+  width: 25px;
   &:active {
     color: ${(props) => props.theme.fontColor};
   }
@@ -51,6 +55,7 @@ export const SliderContainerColumn2 = styled.div`
 export const SliderWindow = styled.div`
   width: 400px;
   overflow: hidden;
+  
 `;
 export const SliderContainerRowWrapper = styled.div`
   display: flex;
@@ -67,6 +72,7 @@ export const SliderContainerRowWrapper = styled.div`
   &:active{
     cursor: grabbing;
   }
+ 
 `;
 
 export const SliderContainerRow = styled.div`
@@ -97,6 +103,7 @@ export const SliderContainerRow = styled.div`
     position: relative;
     right: 20px;
   }
+  
 `;
 
 export const LiStyled = styled.li`

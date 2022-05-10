@@ -21,7 +21,7 @@ export const HotSpotSection = styled.section`
 	background-position: center;
 	background-size: cover;
 	padding-top: clamp(20px, 25vh, 40px);
-	border: 2px solid;
+	
     
 `;
 

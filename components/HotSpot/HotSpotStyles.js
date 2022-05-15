@@ -10,8 +10,8 @@ export const Pointer = styled(IoLocateSharp)`
   width: 25px;
   position: absolute;
   cursor: pointer;
-  left: ${(props) => props.xKey+'px'};
-  top: ${(props) => props.yKey+'px'};
+  left: ${(props) => props.xkey+'px'};
+  top: ${(props) => props.ykey+'px'};
   z-index: 2; 
   transition-duration: 0.4s;
   color: ${(props) => {
@@ -31,8 +31,7 @@ transform: ${(props) => {
 `;
 
 export const ImageStyled = styled(Image).attrs({
-    height: 400,
-    width: 400
+    
 })`
     
     min-width: 400px;
@@ -42,12 +41,10 @@ export const ImageStyled = styled(Image).attrs({
 
 
 export const HotSpotSection = styled.section`
+	border-radius: 20px;
+    box-shadow: ${props=>props.theme.shadow};
+	margin: 10px;
 	
-	background-position: center;
-	background-size: cover;
-	padding-top: clamp(20px, 25vh, 40px);
-	
-    
 `;
 
 export const HotSpotWrapper = styled.div`
@@ -55,7 +52,7 @@ export const HotSpotWrapper = styled.div`
     justify-content: center;
     align-items: center;
     position: relative ;
-    background-color: ${props=>props.theme.body};
+  
     
     @media (max-width: 960px) {
 		flex-direction: column;

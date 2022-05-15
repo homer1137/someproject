@@ -9,6 +9,7 @@ import {
   ImageStyled,
   Pointer
 } from "./HotSpotStyles";
+
 import SmallSlider from "../SmallSlider";
 import { useState } from "react";
 import { sliderArray } from "../SmallSlider/sliderArray";
@@ -34,8 +35,8 @@ export default function HotSpot() {
               active2={
                 index === (moveSlider + 400) / 400 - 1 ? { active2 } : null
               }
-              xKey={item.x}
-              yKey={item.y}
+              xkey={item.x}
+              ykey={item.y}
             ></Pointer>
           ))}
           <SliderWrapper showSlider={showSlider?230:0} >

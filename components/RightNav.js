@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Link from "next/link";
 import { Switcher } from "../styles/Switcher";
 import { IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
+import Router from "next/router";
+
 
 const Ul = styled.ul`
   list-style: none;
@@ -42,7 +44,7 @@ const Ul = styled.ul`
   }
 `;
 
-const RightNav = ({ open, ...props }) => {
+const RightNav = ({ open, setOpen, ...props }) => {
   const themTogl = props.themeToggler;
   const theme = props.theme;
   
@@ -51,17 +53,17 @@ const RightNav = ({ open, ...props }) => {
     <Ul open={open}>
       <li>
         <Link href={"/"}>
-          <a>Main</a>
+          <a onClick={() => setOpen(!open)}>Main</a>
         </Link>
       </li>
       <li>
-        <Link href={"/products"}>
-          <a>Products</a>
+        <Link href={"/products"} >
+          <a onClick={() => setOpen(!open)}>Products</a>
         </Link>
       </li>
       <li>
         <Link href={"/cms"}>
-          <a>CMS</a>
+          <a onClick={() => setOpen(!open)}>CMS</a>
         </Link>
       </li>
 

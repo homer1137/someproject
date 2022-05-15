@@ -1,27 +1,29 @@
 import Router from "next/router";
 import Head from "next/head";
-import MainLayout from '../../components/MainLayout'
 import styled from 'styled-components'
+import AddProductForma from "../../components/AddProductForma";
 
-const H1 = styled.h1`
-    color: coral;
-`
 
-function About() {
+
+function About2() {
   function clickHandler() {
     Router.push("/posts");
   }
+
+
+ 
 
   return (
     <>
         <Head>
             <title>CMS page</title>
         </Head>
-      <H1>CMS</H1>
-      <button onClick={() => Router.push("/")}>Go back to 2017</button>
-      <button onClick={clickHandler}>this one button leads you to Posts</button>
+      <h1>CMS</h1>
+      
+      <AddProductForma/>
+      
     </>
   );
 }
 
-export default About;
+export default About2;

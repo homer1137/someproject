@@ -5,6 +5,7 @@ border-radius: 4px;
 background: none;
 white-space: nowrap;
 padding: 10px 20px;
+margin: 5px;
 font-size: 16px;
 color: ${props=>props.theme.fontColor2};
 outline: none;

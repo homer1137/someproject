@@ -12,6 +12,7 @@ import {
   LiStyled,
 } from "./SmallSliderStyles";
 import { HotSpotButton } from "../HotSpot/HotSpotStyles";
+import { Button } from "../../styles/Button";
 import { sliderArray } from "./sliderArray";
 
 export default function SmallSlider({moveSlider, setMoveSlider}) {
@@ -115,7 +116,7 @@ export default function SmallSlider({moveSlider, setMoveSlider}) {
                 <h3>{item.price}</h3>
                 <h2>{item.title}</h2>
                 <span>{item.weight}</span>
-                <HotSpotButton>Get more</HotSpotButton>
+                <Button>Get more</Button>
               </SliderContainerColumn2>
               <Image src={item.picture} width="140" height="140" />
             </SliderContainerRow>

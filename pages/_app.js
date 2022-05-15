@@ -4,6 +4,9 @@ import { darktheme, lighttheme } from "../styles/themes";
 import { useState, useCallback } from "react";
 import MainLayout from "../components/MainLayout";
 import Head from "next/head";
+import initFirebase from "../Firebase/ininFirebase";
+
+initFirebase()
 
 export default function MyApp({ Component, pageProps }) {
   const [theme, setTheme] = useState("dark");

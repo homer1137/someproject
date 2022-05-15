@@ -39,7 +39,7 @@ export default function HotSpot() {
               ykey={item.y}
             ></Pointer>
           ))}
-          <SliderWrapper showSlider={showSlider?230:0} >
+          <SliderWrapper showSlider={showSlider?221:0} >
           <SmallSlider setMoveSlider={setMoveSlider} moveSlider={moveSlider}/>
           <ShowButton showSlider={showSlider?360:0} onClick={()=>setShowSlider(prev=>!prev)}>{showSlider?'Show items':'Hide items'}</ShowButton>
           </SliderWrapper>

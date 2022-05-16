@@ -14,31 +14,37 @@ const H1 = styled.h1`
   color: coral;
 `;
 
+
+
+
+
 export const getStaticProps = async () => {
   let products = [];
+  
   const db = getDatabase();
   const starCountRef = ref(db, "goods/");
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
     if (data) {
       products = Object.values(data);
+      console.log(data)
     }
   });
   if (!products) {
     return { notFound: true };
   }
   return {
-    props: { products, data },
+    props: { products},
   };
 };
 
-function Products({ products, data }) {
+function Products({ products }) {
 
 
   const [products1, setProducts1] =useState(products);
   console.log({products1})
   console.log({products})
-  console.log(data)
+  
   async function deleteProduct(e, product1) {
     e.preventDefault();
     e.stopPropagation();

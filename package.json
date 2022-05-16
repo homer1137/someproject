@@ -2,15 +2,19 @@
   "name": "someproject",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://homer1137.github.io/someproject/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "firebase": "^9.8.1",
     "firebase-admin": "^10.2.0",
+    "gh-pages": "^4.0.0",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",

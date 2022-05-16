@@ -62,6 +62,11 @@ const RightNav = ({ open, setOpen, ...props }) => {
         </Link>
       </li>
       <li>
+        <Link href={"/staticproducts"} >
+          <a onClick={() => setOpen(!open)}>StatProducts</a>
+        </Link>
+      </li>
+      <li>
         <Link href={"/cms"}>
           <a onClick={() => setOpen(!open)}>CMS</a>
         </Link>

@@ -1,21 +1,17 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-
-export const ProductsSection = styled.section`
+export const ProductsDetailSection = styled.section`
 	margin: 10px;
 	border-radius: 20px;
     box-shadow: ${props=>props.theme.shadow};
     display: flex;
-    justify-content: start;
-    align-items: start;
-    flex-wrap: wrap;
-    @media (max-width: 767px) {
-		justify-content: space-around;
-    }
+    justify-content: center;
+    align-items: center;
+    
 
 `;
 
-export const ProductCard = styled.form`
+export const ProductDetailCardSt = styled.form`
 	display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -24,16 +20,11 @@ export const ProductCard = styled.form`
     border-radius: 20px;
     margin: 1rem;
     padding: 1rem;
-    cursor: pointer;
-    transition-duration: 0.3s;
     @media (min-width: 1060px) {
 		max-width: 22%;
-    };
+    }
     @media (min-width: 768px) and (max-width: 1059px) {
 		max-width: 29%;
-    };
-    &:hover{
-        transform: scale(1.1);
     }
     
    

@@ -3,10 +3,9 @@ import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
-import { useEffect, useState } from "react";
-
 import Link from "next/link";
 import { Button } from "../../styles/Button";
+import { useState } from "react";
 
 const H1 = styled.h1`
   color: coral;
@@ -23,14 +22,16 @@ export const getStaticProps = async () => {
     }
   });
   if (!products) {
-    return { notFound: true };
+    return {notFound: true,}
   }
   return {
-    props: { products },
-  };
-};
+    props: {products}
+  }
 
-function Products({ products }) {
+}
+
+
+function Products({products}) {
   const [products1, setProducts1] =useState(products);
 
   async function deleteProduct(e, product1) {
@@ -46,13 +47,7 @@ function Products({ products }) {
         setProducts1(products)
       }
     });
-    if (!products) {
-      return { notFound: true };
-    }
-    
   }
-
- 
 
   return (
     <>
@@ -64,16 +59,13 @@ function Products({ products }) {
       <ProductsSection>
         {products.length > 0
           ? products1.map((item) => (
-              <Link href={`products/${item.title}`} key={item.title}>
-                <ProductCard>
-                  <h2>{item.title}</h2>
-                  <div>{item.description}</div>
-                  <img src={item.picture} alt="some food" />
-                  <Button onClick={(e) => deleteProduct(e, item.title)}>
-                    Delete product
-                  </Button>
-                </ProductCard>
-              </Link>
+            <Link href={`products/${item.title}`} key={item.title}>  
+            <ProductCard >
+                <h2>{item.title}</h2>
+                <div>{item.description}</div>
+                <img src={item.picture} alt="some food" />
+             <Button onClick={(e) => deleteProduct(e, item.title)}>Delete product</Button>   
+              </ProductCard></Link>
             ))
           : null}
       </ProductsSection>

@@ -7,14 +7,15 @@ import Link from "next/link";
 
 export async function getStaticPaths() {
   const db = getDatabase();
-  const starCountRef = ref(db, `goods/`);
+  const starCountRef = await ref(db, `goods/`);
   onValue(starCountRef, (snapshot) => {
-    const data = snapshot.val();
+    const data = await snapshot.val();
     const paths = data.map(({ product }) => ({
       params: { product: product.toString() },
     }));
     return {
       paths,
+      fallback: false,
     };
   });
 }

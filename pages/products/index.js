@@ -28,16 +28,17 @@ export const getStaticProps = async () => {
     return { notFound: true };
   }
   return {
-    props: { products },
+    props: { products, data },
   };
 };
 
-function Products({ products }) {
+function Products({ products, data }) {
 
 
   const [products1, setProducts1] =useState(products);
   console.log({products1})
   console.log({products})
+  console.log(data)
   async function deleteProduct(e, product1) {
     e.preventDefault();
     e.stopPropagation();

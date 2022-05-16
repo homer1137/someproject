@@ -6,9 +6,9 @@ import { Button } from "../../styles/Button";
 import Link from "next/link";
 
 export async function getStaticPaths() {
-  const db = getDatabase();
+  const db =  getDatabase();
   const starCountRef =  ref(db, `goods/`);
-  onValue(starCountRef, (snapshot) => {
+  onValue(starCountRef, async (snapshot) => {
     const data = await snapshot.val();
     const paths = data.map(({ product }) => ({
       params: { product: product.toString() },

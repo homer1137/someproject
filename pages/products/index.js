@@ -35,7 +35,7 @@ export const getStaticProps = async () => {
 function Products({ products }) {
   const [products1, setProducts1] =useState(products);
   console.log({products1})
-  console.log({pr})
+  console.log({products})
   async function deleteProduct(e, product1) {
     e.preventDefault();
     e.stopPropagation();

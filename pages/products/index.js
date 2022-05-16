@@ -10,9 +10,7 @@ import { ProductsSection, ProductCard } from "../../components/ProductsSt/Produc
 import Link from "next/link";
 import { Button } from "../../styles/Button";
 
-const H1 = styled.h1`
-  color: coral;
-`;
+
 
 
 
@@ -68,7 +66,7 @@ function Products({ products }) {
         <title>Products page</title>
       </Head>
 
-      <H1>Product list</H1>
+      <h1>Product list</h1>
       <ProductsSection>
         {products.length > 0
           ? products1.map((item) => (

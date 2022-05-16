@@ -51,7 +51,7 @@ const Burger = (props) => {
         <div />
         <div />
       </StyledBurger>
-      <RightNav {...props} open={open} setOpen={setOpen} />
+      <RightNav {...props} open={open} setOpen={setOpen}/>
     </>
   )
 }

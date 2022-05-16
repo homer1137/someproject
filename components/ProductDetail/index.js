@@ -9,7 +9,7 @@ export default function ProductDetailCard({product}) {
 
     async function deleteProduct (e, product1) {
         e.preventDefault();
-        console.log(product1)
+        
         const db = getDatabase();
 await set(ref(db, `/goods/${product1}`), null)
       router.push('/products')

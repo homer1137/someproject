@@ -1,9 +1,11 @@
-import { ProductsSection, ProductCard } from "./ProductsStyled";
+
 import Head from "next/head";
-import Image from "next/image";
+
 import styled from "styled-components";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
 import { useEffect, useState } from "react";
+import { ProductsSection, ProductCard } from "../../components/ProductsSt/ProductsStyled";
+
 
 import Link from "next/link";
 import { Button } from "../../styles/Button";
@@ -46,10 +48,6 @@ function Products({ products }) {
         setProducts1(products)
       }
     });
-    if (!products) {
-      return { notFound: true };
-    }
-    
   }
 
  

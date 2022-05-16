@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export async function getStaticPaths() {
   const db = getDatabase();
-  const starCountRef = await ref(db, `goods/`);
+  const starCountRef =  ref(db, `goods/`);
   onValue(starCountRef, (snapshot) => {
     const data = await snapshot.val();
     const paths = data.map(({ product }) => ({

@@ -13,26 +13,36 @@ import { Button } from "../../styles/Button";
 
 export const getStaticProps = async () => {
   let products = [];
-  const dbRef = ref(getDatabase());
+  function updateProd (zz) {
+    products = zz;
+  };
+  const db = getDatabase();
+  const starCountRef = ref(db, 'goods/');
+  await onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data) {
+    let products1 = Object.values(data);
+    updateProd(products1)
+    return products1
 
-  await get(child(dbRef, `goods/`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      products=Object.values(snapshot.val());
-      return products
-    } else {
-      console.log("No data available");
     }
-  }).then((products)=>{  
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-
+    })
+  
   return {
     props: { products },
   };
  
 };
+
+
+
+
+
+
+
+
+
+
 
 function Products({ products }) {
   

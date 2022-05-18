@@ -21,7 +21,21 @@ export const getStaticProps = async () => {
   try{
     const db = await getDatabase();
     const starCountRef = await ref(db, "goods/");
-    let products = [{title: history, description: hoy, picture: gd}];
+    let products = [ {
+      description: 'sdf',
+      picture: 'https://firebasestorage.googleapis.com/v0/b/someproject-6ab00.appspot.com/o/images%2FmDkSujjKtQs.jpg?alt=media&token=eb793988-fc4f-4faf-b799-9474b488aa5e',
+      title: '444'
+    },
+    {
+      description: 'asdfasdf',
+      picture: 'https://firebasestorage.googleapis.com/v0/b/someproject-6ab00.appspot.com/o/images%2F1fecabb601405d207f898f3b53f0590f.jpg?alt=media&token=30d8430c-93fd-4c82-9c64-1da44c715f18',
+      title: 'asdfdas'
+    },
+    {
+      description: 'zcvxczv',
+      picture: 'https://firebasestorage.googleapis.com/v0/b/someproject-6ab00.appspot.com/o/images%2Fsu1bkCh.jpg?alt=media&token=28df30ea-ac52-494e-9c03-8ab78eff366f',
+      title: 'cvxcz'
+    }];
     const product2 = await onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();
         if (data) {

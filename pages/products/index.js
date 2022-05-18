@@ -35,7 +35,7 @@ export const getStaticProps = async () => {
 };
 
 function Products({ products }) {
-  console.log('product in react', products)
+  
   const [products1, setProducts1] = useState(products);
 
   async function deleteProduct(e, product1) {

@@ -28,6 +28,7 @@ export const getStaticProps = async () => {
     }
     })
   
+    
   const products = await updateProd(products2);
 
 
@@ -40,7 +41,7 @@ export const getStaticProps = async () => {
 
 
 function Products({ products }) {
-  
+  console.log('props', products)
   const [products1, setProducts1] = useState(products);
 
   async function deleteProduct(e, product1) {

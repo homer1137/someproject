@@ -17,17 +17,28 @@ import { Button } from "../../styles/Button";
 
 
 export const getStaticProps = async () => {
-  let products = [];
+  
   try{
     const db = await getDatabase();
     const starCountRef = await ref(db, "goods/");
-    const producto2 = await onValue(starCountRef, (snapshot) => {
+    let products = [{title: history, description: hoy, picture: gd}];
+    const product2 = await onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();
         if (data) {
-          products = Object.values(data);
+        products = (Object.values(data));
           
         }
       });
+      console.log('products', products)
+      if (!products) {
+        return { notFound: true };
+      }
+      return {
+        props: { products},
+      };
+
+
+
   }
   catch(error) {
     console.log('here is some error', error)
@@ -35,12 +46,7 @@ export const getStaticProps = async () => {
  
    
  
-  if (!products) {
-    return { notFound: true };
-  }
-  return {
-    props: { products},
-  };
+ 
 };
 
 function Products({ products }) {

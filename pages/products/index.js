@@ -1,90 +1,57 @@
-
 import Head from "next/head";
 
 import styled from "styled-components";
-import { getDatabase, ref, onValue, remove } from "firebase/database";
+import { getDatabase, ref, onValue, remove, child, get  } from "firebase/database";
 import { useEffect, useState } from "react";
-import { ProductsSection, ProductCard } from "../../components/ProductsSt/ProductsStyled";
-
+import {
+  ProductsSection,
+  ProductCard,
+} from "../../components/ProductsSt/ProductsStyled";
 
 import Link from "next/link";
 import { Button } from "../../styles/Button";
 
-
-
-
-
-
-
 export const getStaticProps = async () => {
-  
-  try{
-    const db = await getDatabase();
-    const starCountRef = await ref(db, "goods/");
-    let products = [ {
-      description: 'sdf',
-      picture: 'https://firebasestorage.googleapis.com/v0/b/someproject-6ab00.appspot.com/o/images%2FmDkSujjKtQs.jpg?alt=media&token=eb793988-fc4f-4faf-b799-9474b488aa5e',
-      title: '444'
-    },
-    {
-      description: 'asdfasdf',
-      picture: 'https://firebasestorage.googleapis.com/v0/b/someproject-6ab00.appspot.com/o/images%2F1fecabb601405d207f898f3b53f0590f.jpg?alt=media&token=30d8430c-93fd-4c82-9c64-1da44c715f18',
-      title: 'asdfdas'
-    },
-    {
-      description: 'zcvxczv',
-      picture: 'https://firebasestorage.googleapis.com/v0/b/someproject-6ab00.appspot.com/o/images%2Fsu1bkCh.jpg?alt=media&token=28df30ea-ac52-494e-9c03-8ab78eff366f',
-      title: 'cvxcz'
-    }];
-    const product2 = await onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        if (data) {
-        products = (Object.values(data));
-          
-        }
-      });
-      console.log('products', products)
-      if (!products) {
-        return { notFound: true };
-      }
-      return {
-        props: { products},
-      };
+  let products = [];
+  const dbRef = ref(getDatabase());
 
+  await get(child(dbRef, `goods/`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      products=Object.values(snapshot.val());
+      return products
+    } else {
+      console.log("No data available");
+    }
+  }).then((products)=>{  
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
-
-  }
-  catch(error) {
-    console.log('here is some error', error)
-  }
- 
-   
- 
+  return {
+    props: { products },
+  };
  
 };
 
 function Products({ products }) {
+  console.log('product in react', products)
+  const [products1, setProducts1] = useState(products);
 
-
-  const [products1, setProducts1] =useState(products);
-  
-  
   async function deleteProduct(e, product1) {
     e.preventDefault();
     e.stopPropagation();
     const db = getDatabase();
     const starCountRef = ref(db, "goods/");
-    remove(ref(db, `/goods/${product1}`)).then(() => {})
+    remove(ref(db, `/goods/${product1}`)).then(() => {});
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
         products = Object.values(data);
-        setProducts1(products)
+        setProducts1(products);
       }
     });
   }
-
- 
 
   return (
     <>

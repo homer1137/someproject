@@ -24,10 +24,10 @@ export const getStaticProps = async () => {
     let products1 = Object.values(data);
     updateProd(products1)
     return products1
-
+    
     }
     })
-  
+  console.log('whyyyy', products)
   return {
     props: { products },
   };

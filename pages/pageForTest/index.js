@@ -5,44 +5,31 @@ import styled from "styled-components";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
 import { useEffect, useState } from "react";
 import { ProductsSection, ProductCard } from "../../components/ProductsSt/ProductsStyled";
-
-
 import Link from "next/link";
 import { Button } from "../../styles/Button";
 
 
 
 
-
-
-
-export const getStaticProps = async () => {
-  let products = [];
+function PageForTest() {
+  const [products1, setProducts1] =useState([]);
   
+  useEffect(()=>{
+
   const db = getDatabase();
   const starCountRef = ref(db, "goods/");
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
     if (data) {
-      products = Object.values(data);
-      
+     let products = Object.values(data);
+     console.log(products)
+     setProducts1(products) 
     }
   });
-  if (!products) {
-    return { notFound: true };
-  }
-  return {
-    props: { products},
-  };
-};
 
-function Products({ products }) {
+  }, [])
 
-
-  const [products1, setProducts1] =useState(products);
-  console.log({products1})
-  console.log({products})
-  
+ 
   async function deleteProduct(e, product1) {
     e.preventDefault();
     e.stopPropagation();
@@ -52,7 +39,7 @@ function Products({ products }) {
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        products = Object.values(data);
+        let products = Object.values(data);
         setProducts1(products)
       }
     });
@@ -68,7 +55,7 @@ function Products({ products }) {
 
       <h1>Product list</h1>
       <ProductsSection>
-        {products.length > 0
+        {products1.length > 0
           ? products1.map((item) => (
               <Link href={`products/${item.title}`} key={item.title}>
                 <ProductCard>
@@ -87,4 +74,4 @@ function Products({ products }) {
   );
 }
 
-export default Products;
+export default PageForTest;

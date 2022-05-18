@@ -18,19 +18,24 @@ import { Button } from "../../styles/Button";
 
 export const getStaticProps = async () => {
   let products = [];
-  
-  const db = getDatabase();
-  const starCountRef = await ref(db, "goods/");
-  const producto2 = await onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        products = Object.values(data);
-        
-      }
-    });
+  try{
+    const db = await getDatabase();
+    const starCountRef = await ref(db, "goods/");
+    const producto2 = await onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          products = Object.values(data);
+          
+        }
+      });
+  }
+  catch(error) {
+    console.log('here is some error', error)
+  }
+ 
    
  
-  if (!producto2) {
+  if (!products) {
     return { notFound: true };
   }
   return {

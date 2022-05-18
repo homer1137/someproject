@@ -10,24 +10,27 @@ import {
 
 import Link from "next/link";
 import { Button } from "../../styles/Button";
-let products = [];
+
 export const getStaticProps = async () => {
-  
+  let products2 = [];
   function updateProd (zz) {
-    products = zz;
+    let products3 = zz;
+    return products3
   };
   const db = getDatabase();
   const starCountRef = ref(db, 'goods/');
   await onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
     if (data) {
-    let products1 = Object.values(data);
-    updateProd(products1)
-    return products1
+    products2 = Object.values(data);
+    
     
     }
     })
   
+  const products = await updateProd(products2);
+
+
   return {
     props: { products },
   };

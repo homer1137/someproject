@@ -10,9 +10,9 @@ import {
 
 import Link from "next/link";
 import { Button } from "../../styles/Button";
-
+let products = [];
 export const getStaticProps = async () => {
-  let products = [];
+  
   function updateProd (zz) {
     products = zz;
   };
@@ -27,20 +27,12 @@ export const getStaticProps = async () => {
     
     }
     })
-  console.log('whyyyy', products)
+  
   return {
     props: { products },
   };
  
 };
-
-
-
-
-
-
-
-
 
 
 

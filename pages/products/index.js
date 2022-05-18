@@ -20,15 +20,17 @@ export const getStaticProps = async () => {
   let products = [];
   
   const db = getDatabase();
-  const starCountRef = ref(db, "goods/");
-  onValue(starCountRef, (snapshot) => {
-    const data = snapshot.val();
-    if (data) {
-      products = Object.values(data);
-      
-    }
-  });
-  if (!products) {
+  const starCountRef = await ref(db, "goods/");
+  const producto2 = await onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        products = Object.values(data);
+        
+      }
+    });
+   
+ 
+  if (!producto2) {
     return { notFound: true };
   }
   return {
@@ -40,8 +42,7 @@ function Products({ products }) {
 
 
   const [products1, setProducts1] =useState(products);
-  console.log({products1})
-  console.log({products})
+  
   
   async function deleteProduct(e, product1) {
     e.preventDefault();

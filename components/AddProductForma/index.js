@@ -40,10 +40,10 @@ export default function AddProductForma() {
 
 
   useEffect(() => {
-    if (titleError || descriptionError || imageUrlError) {
+    if (titleError || descriptionError || imageUrlError || !title || !description || !imageUrl) {
       setFormValid(false);
     } else setFormValid(true);
-  }, [titleError, descriptionError, imageUrlError]);
+  }, [titleError, descriptionError, imageUrlError, imageUrl]);
   
   useEffect(() => {
     if (link) {
@@ -118,6 +118,7 @@ export default function AddProductForma() {
         });
       }
     );
+    setFormValid(false);
   }
   
 

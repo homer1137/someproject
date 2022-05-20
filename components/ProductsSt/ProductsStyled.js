@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 
+
 export const ProductsSection = styled.section`
 	margin: 10px;
 	border-radius: 20px;
@@ -35,6 +36,14 @@ export const ProductCard = styled.form`
     &:hover{
         transform: scale(1.1);
     }
-    
-   
+
+  
 `;
+
+export const ImgSt = styled.img`
+background: #ccc;
+overflow: hidden;
+width: 200px;
+height: 200px;
+object-fit: contain;
+`

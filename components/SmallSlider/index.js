@@ -13,16 +13,18 @@ import {
 } from "./SmallSliderStyles";
 import { HotSpotButton } from "../HotSpot/HotSpotStyles";
 import { Button } from "../../styles/Button";
-import { sliderArray } from "./sliderArray";
+
+import { useContext } from "react";
+import Context from "../../src/Context";
 
 export default function SmallSlider({moveSlider, setMoveSlider}) {
-  //движение стелками
+  const value = useContext(Context)
+  const sliderArray = value.hotSpotArray;
   
-
+  //движение стелками
   const active2 = {
     basis: true,
   };
-
   function moveRight() {
     if (moveSlider === 400 * (sliderArray.length - 1)) {
       setMoveSlider((prev) => prev - 400 * (sliderArray.length - 1));
@@ -94,7 +96,7 @@ export default function SmallSlider({moveSlider, setMoveSlider}) {
         <ul>
           {sliderArray.map((item, index) => (
             <LiStyled
-              key={item.id}
+              key={item.title}
               onClick={() => setMoveSlider(400 * index)}
               active2={
                 index === (moveSlider + 400) / 400 - 1 ? { active2 } : null
@@ -111,14 +113,14 @@ export default function SmallSlider({moveSlider, setMoveSlider}) {
           sliderArray={sliderArray.length}
         >
           {sliderArray.map((item) => (
-            <SliderContainerRow key={item.id}>
+            <SliderContainerRow key={item.title}>
               <SliderContainerColumn2>
-                <h3>{item.price}</h3>
+                <h3>{item.price}$</h3>
                 <h2>{item.title}</h2>
-                <span>{item.weight}</span>
+                <span>{item.weight}kg</span>
                 <Button>Get more</Button>
               </SliderContainerColumn2>
-              <Image src={item.picture} width="140" height="140" />
+              <img src={item.picture} width="140" height="140" />
             </SliderContainerRow>
           ))}
         </SliderContainerRowWrapper>

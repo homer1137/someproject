@@ -46,4 +46,12 @@ overflow: hidden;
 width: 200px;
 height: 200px;
 object-fit: contain;
+@media (max-width: 768px) {
+		width: 450px;
+    height: 450px;
+    };
+    @media (max-width: 1024px) {
+		width: 300px;
+    height: 300px;
+    };
 `

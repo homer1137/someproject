@@ -12,9 +12,15 @@ import {
 
 import SmallSlider from "../SmallSlider";
 import { useState } from "react";
-import { sliderArray } from "../SmallSlider/sliderArray";
+
+import { useContext } from "react";
+import Context from "../../src/Context";
+
+
 
 export default function HotSpot() {
+  const value = useContext(Context)
+  const sliderArray = value.hotSpotArray;
   const [showSlider, setShowSlider] = useState(false);
   const [moveSlider, setMoveSlider] = useState(0);
   const active2 = {
@@ -30,7 +36,7 @@ export default function HotSpot() {
           <ImageStyled src='/producto.jpg' height='400' width='400' alt='some food'/>
           {sliderArray.map((item, index) => (
             <Pointer
-              key={item.id}
+              key={item.title}
               onClick={() => setMoveSlider(400 * index)}
               active2={
                 index === (moveSlider + 400) / 400 - 1 ? { active2 } : null

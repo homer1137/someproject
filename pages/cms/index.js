@@ -2,7 +2,7 @@ import Router from "next/router";
 import Head from "next/head";
 import styled from 'styled-components'
 import AddProductForma from "../../components/AddProductForma";
-
+import AddHotSpot from "../../components/AddHotSpot";
 
 
 function About2() {
@@ -21,6 +21,7 @@ function About2() {
       <h1>CMS</h1>
       
       <AddProductForma/>
+      <AddHotSpot/>
       
     </>
   );

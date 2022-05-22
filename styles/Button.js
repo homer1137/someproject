@@ -32,4 +32,10 @@ position: relative;
 &:hover {
     color: black;
 }
+&:disabled{
+    border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
 `;
